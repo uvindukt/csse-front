@@ -13,9 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faEnvelope,
     faUser,
-    faKey,
     faPhone,
-    faUserPlus,
     faLock
 } from "@fortawesome/free-solid-svg-icons";
 import { Redirect } from "react-router-dom";

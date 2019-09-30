@@ -2,7 +2,7 @@ import React from 'react';
 import Alert from "./Alert";
 import {Button, Col, FormGroup, FormText, Input, InputGroup, InputGroupAddon, InputGroupText, Table} from "reactstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faClipboardList, faClipboardCheck, faBoxes, faTimes, faUser, faEdit, faTrashAlt} from "@fortawesome/free-solid-svg-icons";
+import {faClipboardList, faClipboardCheck, faBoxes, faTimes, faUser, faTrashAlt} from "@fortawesome/free-solid-svg-icons";
 import {Redirect} from "react-router-dom";
 
 export default class Order extends React.Component {

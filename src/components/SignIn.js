@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Button, Card, CardBody, Input, InputGroup, InputGroupAddon, InputGroupText } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faGraduationCap, faKey, faSignInAlt, faDollyFlatbed } from "@fortawesome/free-solid-svg-icons";
-import {NavLink as Link, Redirect} from "react-router-dom";
+import { faEnvelope, faKey, faDollyFlatbed } from "@fortawesome/free-solid-svg-icons";
+import {Redirect} from "react-router-dom";
 import Alert from "./Alert";
 import Background from "../image/background.jpg";
 

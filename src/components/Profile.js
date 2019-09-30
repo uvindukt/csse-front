@@ -25,7 +25,7 @@ class Profile extends Component {
     constructor(props) {
         super(props);
         if (this.props.session.user) {
-            const { name, email, telephone, _id } = this.props.session.user;
+            const { name, email, telephone } = this.props.session.user;
             this.state = {
                 prompt: false,
                 promptText: null,

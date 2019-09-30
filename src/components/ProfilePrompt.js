@@ -204,6 +204,9 @@ class ProfilePrompt extends Component {
                         </Col>
                     </div>
                 </div>;
+            break;
+            default:
+                input = <React.Fragment/>;
                     
                     
         }

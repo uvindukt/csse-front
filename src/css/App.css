@@ -5,6 +5,7 @@
 
 body {
     font-family: main, sans-serif;
+    padding: 0;
 }
 
 .activeNav {

@@ -7,7 +7,7 @@ import {
     ModalHeader
 } from "reactstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faDollyFlatbed, faGraduationCap} from "@fortawesome/free-solid-svg-icons";
+import {faDollyFlatbed} from "@fortawesome/free-solid-svg-icons";
 
 class Alert extends Component {
 
