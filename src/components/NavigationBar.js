@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { NavLink as Link } from "react-router-dom";
+import React, {Component} from "react";
+import {NavLink as Link} from "react-router-dom";
 import {
     Collapse,
     Navbar,
@@ -11,16 +11,14 @@ import {
     DropdownMenu,
     DropdownItem
 } from "reactstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
-    faUserPlus,
-    faSignInAlt,
+    faHardHat,
+    faClipboardList,
     faUserTie,
     faPowerOff,
-    faUserGraduate,
     faWarehouse,
     faUsers,
-    faUser,
     faClipboardCheck,
     faBell,
     faStream,
@@ -36,21 +34,21 @@ class NavigationBar extends Component {
         };
     }
 
-    toggle = () => this.setState({ isOpen: !this.state.isOpen });
+    toggle = () => this.setState({isOpen: !this.state.isOpen});
 
     render() {
-        const { isAuthenticated, user, type } = this.props.session;
+        const {isAuthenticated, user, type} = this.props.session;
         let auth, icon, username, drop;
 
-        if (type === "STUDENT") {
-            icon = <FontAwesomeIcon icon={faUserGraduate}/>;
-            username = user.name;
-        } else if (type === "INSTRUCTOR") {
+        if (type === "MANAGER") {
             icon = <FontAwesomeIcon icon={faUserTie}/>;
             username = user.name;
-        } else if (type === "ADMIN") {
+        } else if (type === "ACCOUNTANT") {
+            icon = <FontAwesomeIcon icon={faUserTie}/>;
             username = user.name;
-            icon = <FontAwesomeIcon icon={faUser}/>;
+        } else if (type === "SITE MANAGER") {
+            username = user.name;
+            icon = <FontAwesomeIcon icon={faHardHat}/>;
         }
 
         if (!isAuthenticated) {
@@ -95,19 +93,29 @@ class NavigationBar extends Component {
                 </React.Fragment>
             );
 
-            if (type === "ADMIN") {
+            if (type === "SITE MANAGER") {
                 drop = (<UncontrolledDropdown nav inNavbar>
                     <DropdownToggle nav caret>
                         Options
                     </DropdownToggle>
                     <DropdownMenu right>
                         <DropdownItem>
+                            <Link exact to="/inquiry" className="navbar-brand">
+                                <span style={{color: '#5cb85c', fontSize: 'large'}}>
+                                <FontAwesomeIcon
+                                    icon={faClipboardList}
+                                />
+                                    &ensp;Inquiry
+                                </span>
+                            </Link>
+                        </DropdownItem>
+                        <DropdownItem>
                             <Link exact to="/order" className="navbar-brand">
                                 <span style={{color: '#5cb85c', fontSize: 'large'}}>
                                 <FontAwesomeIcon
                                     icon={faClipboardCheck}
                                 />
-                                &ensp;Order
+                                    &ensp;Order
                                 </span>
                             </Link>
                         </DropdownItem>
@@ -117,7 +125,7 @@ class NavigationBar extends Component {
                                 <FontAwesomeIcon
                                     icon={faWarehouse}
                                 />
-                                &ensp;Inventory
+                                    &ensp;Inventory
                                 </span>
                             </Link>
                         </DropdownItem>
@@ -128,13 +136,13 @@ class NavigationBar extends Component {
                                 <FontAwesomeIcon
                                     icon={faUsers}
                                 />
-                                &emsp;User
+                                    &emsp;User
                                 </span>
                             </Link>
                         </DropdownItem>
                     </DropdownMenu>
                 </UncontrolledDropdown>);
-            } else if (type === "INSTRUCTOR") {
+            } else if (type === "MANAGER") {
                 drop = (<UncontrolledDropdown nav inNavbar>
                     <DropdownToggle nav caret>
                         Options
@@ -210,7 +218,7 @@ class NavigationBar extends Component {
                 <Link exact to="/" className="navbar-brand">
                     Procurement System&ensp;
                     <FontAwesomeIcon
-                        style={{ transform: "scale(-1, 1)", color: "rgba(0, 128, 0, 1)" }}
+                        style={{transform: "scale(-1, 1)", color: "rgba(0, 128, 0, 1)"}}
                         icon={faDollyFlatbed}
                     />
                 </Link>

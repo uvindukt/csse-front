@@ -2,9 +2,8 @@ import React from 'react';
 import Alert from "./Alert";
 import {Button, Col, FormGroup, FormText, Input, InputGroup, InputGroupAddon, InputGroupText, Table} from "reactstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faClipboardList, faBoxes, faTimes, faUser} from "@fortawesome/free-solid-svg-icons";
+import {faClipboardCheck, faBoxes, faTimes, faUser} from "@fortawesome/free-solid-svg-icons";
 import {Redirect} from "react-router-dom";
-import InventoryItem from "./InventoryItem";
 
 export default class Order extends React.Component {
 
@@ -151,7 +150,7 @@ export default class Order extends React.Component {
           </span>
                 </Col>
                 <Col md={6} className="container-fluid text-center">
-                    <h1 className="mt-4 mb-4 text-success"><FontAwesomeIcon icon={faClipboardList}/>&ensp;Order</h1>
+                    <h1 className="mt-4 mb-4 text-success"><FontAwesomeIcon icon={faClipboardCheck}/>&ensp;Order</h1>
                     <hr/>
                     <form onSubmit={this.handleSubmit}>
                         <div className="comp pt-4 pb-3 p-2 mb-4">
@@ -166,7 +165,7 @@ export default class Order extends React.Component {
                                 <tbody>
                                 {
                                     this.state.orderItems.map(item =>
-                                        <tr key={item._id + item.orderQuantity}>
+                                        <tr key={item._id}>
                                             <td className="text-left" style={{
                                                 borderBottomLeftRadius: '0.5rem',
                                                 borderTopLeftRadius: '0.5rem'

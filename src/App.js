@@ -10,6 +10,8 @@ import { bake_cookie, read_cookie, delete_cookie } from "sfcookies";
 import User from "./components/User";
 import Inventory from "./components/Inventory";
 import Order from "./components/Order";
+import Inquiry from "./components/Inquiry";
+import OrderInquiry from "./components/OrderInquiry";
 
 class App extends Component {
 
@@ -76,6 +78,12 @@ class App extends Component {
               )}/>
               <Route exact path="/order" render={props => (
                   <Order {...props} session={this.state}/>
+              )}/>
+              <Route exact path="/inquiry" render={props => (
+                  <Inquiry {...props} session={this.state}/>
+              )}/>
+              <Route exact path="/order-inquiry" render={props => (
+                  <OrderInquiry {...props} session={this.state}/>
               )}/>
               <Route component={NotFound}/>
             </Switch>
