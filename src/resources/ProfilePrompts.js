@@ -6,7 +6,7 @@ import { faEnvelope, faKey, faLock, faPhone, faUser } from "@fortawesome/free-so
 /**
  * @desc Name input.
  */
-export const promptName = (<InputGroup>
+export const promptName = <InputGroup>
     <InputGroupAddon addonType="prepend">
         <InputGroupText className="adTextBox">
             <FontAwesomeIcon icon={faUser}/>
@@ -21,7 +21,7 @@ export const promptName = (<InputGroup>
         name="name"
         placeholder="Name"
     />
-</InputGroup>);
+</InputGroup>;
 
 /**
  * @desc E-Mail input.

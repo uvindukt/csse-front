@@ -1,7 +1,17 @@
 import React, { Component } from "react";
-import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
+import {
+    Button, Col,
+    Input,
+    InputGroup,
+    InputGroupAddon,
+    InputGroupText,
+    Modal,
+    ModalBody,
+    ModalFooter,
+    ModalHeader
+} from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
+import {faEnvelope, faGraduationCap, faKey, faLock, faPhone, faUser} from "@fortawesome/free-solid-svg-icons";
 import Alert from "./Alert";
 
 class ProfilePrompt extends Component {
@@ -12,16 +22,6 @@ class ProfilePrompt extends Component {
             alert: false,
             alertText: null
         };
-    }
-
-    componentDidMount() {
-        if (document.getElementById("password")) {
-            document.getElementById("currentPassword").addEventListener("change", this.handleChange);
-            document.getElementById("password").addEventListener("change", this.handleChange);
-            document.getElementById("confirmPassword").addEventListener("change", this.handleChange);
-        } else {
-            document.getElementById("input").addEventListener("change", this.handleChange);
-        }
     }
 
     resetAlert = () => {
@@ -81,6 +81,133 @@ class ProfilePrompt extends Component {
         if (this.state.alert)
             alert = <Alert alertText={this.state.alertText} resetAlert={this.resetAlert}/>;
 
+        let input = "";
+
+        switch (promptText) {
+            case ('name'): 
+                input = <InputGroup>
+                    <InputGroupAddon addonType="prepend">
+                        <InputGroupText className="adTextBox">
+                            <FontAwesomeIcon icon={faUser}/>
+                        </InputGroupText>
+                    </InputGroupAddon>
+                    <Input
+                        id="input"
+                        autoComplete="off"
+                        required
+                        onChange={this.handleChange}
+                        className="textBox"
+                        type="text"
+                        name="name"
+                        placeholder="Name"
+                    />
+                </InputGroup>;
+            break;
+            case ('email'):
+                input = <InputGroup>
+                    <InputGroupAddon addonType="prepend">
+                        <InputGroupText className="adTextBox">
+                            <FontAwesomeIcon icon={faEnvelope}/>
+                        </InputGroupText>
+                    </InputGroupAddon>
+                    <Input
+                        id="input"
+                        autoComplete="off"
+                        required
+                        onChange={this.handleChange}
+                        className="textBox"
+                        type="email"
+                        name="email"
+                        placeholder="E-Mail"
+                    />
+                </InputGroup>;
+            break;
+            case ('telephone'):
+                input = <InputGroup>
+                    <InputGroupAddon addonType="prepend">
+                        <InputGroupText className="adTextBox">
+                            <FontAwesomeIcon icon={faPhone}/>
+                        </InputGroupText>
+                    </InputGroupAddon>
+                    <Input
+                        id="input"
+                        autoComplete="off"
+                        required
+                        onChange={this.handleChange}
+                        className="textBox"
+                        type="text"
+                        name="telephone"
+                        placeholder="Telephone"
+                    />;
+                </InputGroup>;
+            break;
+            case ('password'):
+                input = <div className="container-fluid mx-0">
+                    <div className="row container-fluid mx-0">
+                        <Col md={12} className="mb-4">
+                            <InputGroup>
+                                <InputGroupAddon addonType="prepend">
+                                    <InputGroupText className="adTextBox">
+                                        <FontAwesomeIcon icon={faLock}/>
+                                    </InputGroupText>
+                                </InputGroupAddon>
+                                <Input
+                                    id="currentPassword"
+                                    required
+                                    onChange={this.handleChange}
+                                    className="textBox"
+                                    type="password"
+                                    name="currentPassword"
+                                    placeholder="Current Password"
+                                />
+                            </InputGroup>
+                        </Col>
+                    </div>
+                    <div className="row container-fluid mx-0">
+                        <Col md={12} className="mb-4">
+                            <InputGroup>
+                                <InputGroupAddon addonType="prepend">
+                                    <InputGroupText className="adTextBox">
+                                        <FontAwesomeIcon icon={faKey}/>
+                                    </InputGroupText>
+                                </InputGroupAddon>
+                                <Input
+                                    id="password"
+                                    required
+                                    onChange={this.handleChange}
+                                    className="textBox"
+                                    type="password"
+                                    name="password"
+                                    placeholder="New Password"
+                                />
+                            </InputGroup>
+                        </Col>
+                    </div>
+                    <div className="row container-fluid mx-0">
+                        <Col md={12} className="mb-4">
+                            <InputGroup>
+                                <InputGroupAddon addonType="prepend">
+                                    <InputGroupText className="adTextBox">
+                                        <FontAwesomeIcon icon={faKey}/>
+                                    </InputGroupText>
+                                </InputGroupAddon>
+                                <Input
+                                    id="confirmPassword"
+                                    required
+                                    onChange={this.handleChange}
+                                    className="textBox"
+                                    type="password"
+                                    name="confirmPassword"
+                                    placeholder="Confirm Password"
+                                />
+                            </InputGroup>
+                        </Col>
+                    </div>
+                </div>;
+                    
+                    
+        }
+
         return (
             <Modal
                 centered
@@ -106,7 +233,7 @@ class ProfilePrompt extends Component {
                         />
                     </div>
                 </ModalHeader>
-                <ModalBody>{promptText}</ModalBody>
+                <ModalBody>{input}</ModalBody>
                 <ModalFooter>
                     <Button onClick={this.handleSubmit} className="button my-0 py-1">
                         Update

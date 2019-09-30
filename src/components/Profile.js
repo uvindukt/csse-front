@@ -20,12 +20,6 @@ import {
 import { Redirect } from "react-router-dom";
 import ProfilePrompt from "./ProfilePrompt";
 import { read_cookie } from "sfcookies";
-import {
-    promptName,
-    promptEmail,
-    promptTelephone,
-    promptPassword
-} from "../resources/ProfilePrompts";
 
 class Profile extends Component {
     constructor(props) {
@@ -35,7 +29,7 @@ class Profile extends Component {
             this.state = {
                 prompt: false,
                 promptText: null,
-                URI: `/api/${this.props.session.type}/${_id}`,
+                URI: `http://localhost:5000/api/user/email/${email}`,
                 type: this.props.session.type,
                 token: this.props.session.token,
                 name,
@@ -92,7 +86,7 @@ class Profile extends Component {
                     </Col>
                     <Col md={6} className="text-right">
                         <Button
-                            onClick={() => this.renderPrompt(promptTelephone)}
+                            onClick={() => this.renderPrompt('telephone')}
                             className="button m-0 mt-2 py-1"><FontAwesomeIcon
                             icon={faEdit}/></Button>
                     </Col>
@@ -115,7 +109,7 @@ class Profile extends Component {
                                 </Col>
                                 <Col md={6} className="text-right">
                                     <Button
-                                        onClick={() => this.renderPrompt(promptName)}
+                                        onClick={() => this.renderPrompt('name')}
                                         className="button m-0 mt-2 py-1"><FontAwesomeIcon
                                         icon={faEdit}/></Button>
                                 </Col>
@@ -130,7 +124,7 @@ class Profile extends Component {
                                 </Col>
                                 <Col md={6} className="text-right">
                                     <Button
-                                        onClick={() => this.renderPrompt(promptEmail)}
+                                        onClick={() => this.renderPrompt('email')}
                                         className="button m-0 mt-2 py-1"><FontAwesomeIcon
                                         icon={faEdit}/></Button>
                                 </Col>
@@ -145,7 +139,7 @@ class Profile extends Component {
                                 </Col>
                                 <Col md={6} className="text-right">
                                     <Button
-                                        onClick={() => this.renderPrompt(promptPassword)}
+                                        onClick={() => this.renderPrompt('password')}
                                         className="button m-0 mt-2 py-1"><FontAwesomeIcon
                                         icon={faEdit}/></Button>
                                 </Col>
