@@ -15,7 +15,9 @@ export default class Order extends React.Component {
             itemId: "",
             quantity: 0,
             orderItems: [],
-            total: 0
+            total: 0,
+            alert: false,
+            alertText: null
         };
     }
 
@@ -44,6 +46,31 @@ export default class Order extends React.Component {
         this.setState({orderItems: this.state.orderItems.concat(item)}, () => {
             this.state.orderItems.forEach(item => this.setState({total: this.state.total + (item.orderQuantity * item.unitPrice)}));
         });
+    };
+
+    order = event => {
+
+        event.preventDefault();
+
+        const packet = {
+            method: 'POST',
+            headers: {
+                "Accept": "application/json, text/plain, */*",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                status: this.state.total > 100000 ? 'PENDING' : 'APPROVED',
+                estimatedTotal: this.state.total,
+                items: this.state.orderItems,
+                siteManager: this.props.session.user
+            })
+        };
+
+        fetch('http://localhost:5000/api/order', packet)
+            .then(response => response.json())
+            .then(result => {if (result.msg) this.setState({alert: true, alertText: result.msg})})
+            .catch(err => console.log(err));
+
     };
 
     handleChange = event => {
@@ -165,6 +192,13 @@ export default class Order extends React.Component {
                                 </tr>
                                 </tbody>
                             </Table>
+                        </div>
+                        <div className="row container-fluid mr-0 pr-0">
+                            <Col md={12} className="mb-4 px-0 text-center">
+                                <Button className="button" disabled={this.state.orderItems.length <= 0} onClick={this.order} style={{width: '100%'}}>
+                                    Order
+                                </Button>
+                            </Col>
                         </div>
                     </form>
                 </Col>
