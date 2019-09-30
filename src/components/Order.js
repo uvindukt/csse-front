@@ -2,7 +2,7 @@ import React from 'react';
 import Alert from "./Alert";
 import {Button, Col, FormGroup, FormText, Input, InputGroup, InputGroupAddon, InputGroupText, Table} from "reactstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEnvelope, faLock, faPhone, faUser} from "@fortawesome/free-solid-svg-icons";
+import {faEnvelope, faLock, faTimes, faUser} from "@fortawesome/free-solid-svg-icons";
 import {Redirect} from "react-router-dom";
 import InventoryItem from "./InventoryItem";
 
@@ -166,7 +166,7 @@ export default class Order extends React.Component {
                                 <tbody>
                                 {
                                     this.state.orderItems.map(item =>
-                                        <tr key={item._id}>
+                                        <tr key={item._id + item.orderQuantity}>
                                             <td className="text-left" style={{
                                                 borderBottomLeftRadius: '0.5rem',
                                                 borderTopLeftRadius: '0.5rem'
@@ -189,6 +189,21 @@ export default class Order extends React.Component {
                                         borderBottomRightRadius: '0.5rem',
                                         borderTopRightRadius: '0.5rem'
                                     }}>Rs. {this.state.total}</th>
+                                </tr>
+                                <tr>
+                                    <td className="text-left" style={{
+                                        borderBottomLeftRadius: '0.5rem',
+                                        borderTopLeftRadius: '0.5rem'
+                                    }}>Clear</td>
+                                    <td> </td>
+                                    <td style={{
+                                        borderBottomRightRadius: '0.5rem',
+                                        borderTopRightRadius: '0.5rem'
+                                    }}>
+                                        <Button className="button my-0" disabled={this.state.orderItems.length <= 0} onClick={() => this.setState({orderItems: [], total: 0})}>
+                                            <FontAwesomeIcon icon={faTimes}/>
+                                        </Button>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </Table>
