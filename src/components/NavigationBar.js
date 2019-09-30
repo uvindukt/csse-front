@@ -15,12 +15,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faUserPlus,
     faSignInAlt,
+    faUserTie,
     faPowerOff,
     faUserGraduate,
-    faUserTie,
+    faWarehouse,
     faUsers,
     faUser,
-    faBook,
+    faClipboardCheck,
     faBell,
     faStream,
     faDollyFlatbed
@@ -104,7 +105,7 @@ class NavigationBar extends Component {
                             <Link exact to="/order" className="navbar-brand">
                                 <span style={{color: '#5cb85c', fontSize: 'large'}}>
                                 <FontAwesomeIcon
-                                    icon={faBook}
+                                    icon={faClipboardCheck}
                                 />
                                 &ensp;Order
                                 </span>
@@ -114,7 +115,7 @@ class NavigationBar extends Component {
                             <Link exact to="/inventory" className="navbar-brand">
                                 <span style={{color: '#5cb85c', fontSize: 'large'}}>
                                 <FontAwesomeIcon
-                                    icon={faUserTie}
+                                    icon={faWarehouse}
                                 />
                                 &ensp;Inventory
                                 </span>
@@ -143,7 +144,7 @@ class NavigationBar extends Component {
                             <Link exact to="/instructor/courses" className="navbar-brand">
                                 <span style={{color: '#5cb85c', fontSize: 'large'}}>
                                 <FontAwesomeIcon
-                                    icon={faBook}
+                                    icon={faClipboardCheck}
                                 />
                                     &ensp;Courses
                                 </span>
@@ -172,7 +173,7 @@ class NavigationBar extends Component {
                             <Link exact to="/student/courses/enrolled" className="navbar-brand">
                                 <span style={{color: '#5cb85c', fontSize: 'large'}}>
                                 <FontAwesomeIcon
-                                    icon={faBook}
+                                    icon={faClipboardCheck}
                                 />
                                     &ensp;Enrolled Courses
                                 </span>

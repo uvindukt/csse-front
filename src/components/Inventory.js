@@ -3,7 +3,7 @@ import {Container, Row, Col, Table, Spinner} from 'reactstrap';
 import Alert from "./Alert";
 import {Redirect} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faLock} from "@fortawesome/free-solid-svg-icons";
+import {faWarehouse} from "@fortawesome/free-solid-svg-icons";
 import InventoryItem from "./InventoryItem";
 
 export default class Inventory extends React.Component {
@@ -40,7 +40,7 @@ export default class Inventory extends React.Component {
         if (this.state.items.length === null) {
 
             items = <div className="mt-4 text-success">
-                <span style={{ fontSize: "2rem" }}>No Courses</span>
+                <span style={{ fontSize: "2rem" }}>Inventory is empty.</span>
             </div>;
 
         } else if (this.state.items.length === 0) {
@@ -78,7 +78,7 @@ export default class Inventory extends React.Component {
                 <Col md={2}/>
                 <Col md={8}>
                     <h1 className="mt-4 mb-4 text-success text-center">
-                        <FontAwesomeIcon icon={faLock}/>
+                        <FontAwesomeIcon icon={faWarehouse}/>
                         &ensp;Inventory
                     </h1>
                     <hr/>

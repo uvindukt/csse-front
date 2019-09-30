@@ -2,7 +2,7 @@ import React from 'react';
 import Alert from "./Alert";
 import {Button, Col, FormGroup, FormText, Input, InputGroup, InputGroupAddon, InputGroupText, Table} from "reactstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEnvelope, faLock, faTimes, faUser} from "@fortawesome/free-solid-svg-icons";
+import {faClipboardList, faBoxes, faTimes, faUser} from "@fortawesome/free-solid-svg-icons";
 import {Redirect} from "react-router-dom";
 import InventoryItem from "./InventoryItem";
 
@@ -92,8 +92,8 @@ export default class Order extends React.Component {
                 <Col md={6} className="container-fluid text-center">
           <span>
             <h1 className="mt-4 mb-4 text-success">
-              <FontAwesomeIcon icon={faLock}/>
-                &ensp;Add Item
+              <FontAwesomeIcon icon={faBoxes}/>
+                &ensp;Add Items
             </h1>
             <hr/>
             <div className="row">
@@ -151,7 +151,7 @@ export default class Order extends React.Component {
           </span>
                 </Col>
                 <Col md={6} className="container-fluid text-center">
-                    <h1 className="mt-4 mb-4 text-success">Order</h1>
+                    <h1 className="mt-4 mb-4 text-success"><FontAwesomeIcon icon={faClipboardList}/>&ensp;Order</h1>
                     <hr/>
                     <form onSubmit={this.handleSubmit}>
                         <div className="comp pt-4 pb-3 p-2 mb-4">
