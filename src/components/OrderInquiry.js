@@ -2,7 +2,7 @@ import React from 'react';
 import Alert from "./Alert";
 import {Button, Col, FormGroup, FormText, Input, InputGroup, InputGroupAddon, InputGroupText, Table} from "reactstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faClipboardList, faClipboardCheck, faBoxes, faTimes, faUser, faEdit} from "@fortawesome/free-solid-svg-icons";
+import {faClipboardList, faClipboardCheck, faBoxes, faTimes, faUser, faEdit, faTrashAlt} from "@fortawesome/free-solid-svg-icons";
 import {Redirect} from "react-router-dom";
 
 export default class Order extends React.Component {
@@ -37,7 +37,9 @@ export default class Order extends React.Component {
     resetAlert = () => {
         this.state.alertText === 'Order updated.'
             ? this.setState({redirect: true})
-            : this.setState({alert: false, alertText: null});
+            : this.state.alertText === 'Order deleted.'
+            ? this.setState({redirect: true})
+            : this.setState({alert: false, alertText: null})
     };
 
     addItem = async () => {
@@ -78,6 +80,30 @@ export default class Order extends React.Component {
 
     };
 
+    delete = event => {
+
+        event.preventDefault();
+
+        const packet = {
+            method: 'DELETE',
+            headers: {
+                "Accept": "application/json, text/plain, */*",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                id: this.props.location.state.order._id
+            })
+        };
+
+        fetch('http://localhost:5000/api/order', packet)
+            .then(response => response.json())
+            .then(result => {
+                if (result.msg) this.setState({alert: true, alertText: result.msg})
+            })
+            .catch(err => console.log(err));
+
+    };
+
     handleChange = event => {
         this.setState({
             [event.target.name]: event.target.value
@@ -99,8 +125,12 @@ export default class Order extends React.Component {
             <div className="container-fluid row mx-0">
                 <Col md={12}>
                     <Col md={12}>
-                        <h1 className="mt-4 mb-4 text-success text-center"><FontAwesomeIcon
-                            icon={faClipboardList}/>&ensp;Current Order</h1>
+                        <h1 className="mt-4 mb-4 text-success text-center w-100">
+                            <FontAwesomeIcon icon={faClipboardList}/>&ensp;Current Order
+                            <Button className="button my-0 float-right" onClick={this.delete}>
+                                <FontAwesomeIcon icon={faTrashAlt}/>
+                            </Button>
+                        </h1>
                         <hr/>
                         <Table className="merchantTable text-center" striped borderless responsive>
                             <thead>

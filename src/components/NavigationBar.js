@@ -99,47 +99,47 @@ class NavigationBar extends Component {
                         Options
                     </DropdownToggle>
                     <DropdownMenu right>
-                        <DropdownItem>
-                            <Link exact to="/inquiry" className="navbar-brand">
+                            <Link exact to="/inquiry">
+                                <DropdownItem className="navbar-brand">
                                 <span style={{color: '#5cb85c', fontSize: 'large'}}>
                                 <FontAwesomeIcon
                                     icon={faClipboardList}
                                 />
                                     &ensp;Inquiry
                                 </span>
+                                </DropdownItem>
                             </Link>
-                        </DropdownItem>
-                        <DropdownItem>
-                            <Link exact to="/order" className="navbar-brand">
+                            <Link exact to="/order">
+                                <DropdownItem className="navbar-brand">
                                 <span style={{color: '#5cb85c', fontSize: 'large'}}>
                                 <FontAwesomeIcon
                                     icon={faClipboardCheck}
                                 />
                                     &ensp;Order
                                 </span>
+                                </DropdownItem>
                             </Link>
-                        </DropdownItem>
-                        <DropdownItem>
-                            <Link exact to="/inventory" className="navbar-brand">
+                            <Link exact to="/inventory">
+                                <DropdownItem className="navbar-brand">
                                 <span style={{color: '#5cb85c', fontSize: 'large'}}>
                                 <FontAwesomeIcon
                                     icon={faWarehouse}
                                 />
                                     &ensp;Inventory
                                 </span>
+                                </DropdownItem>
                             </Link>
-                        </DropdownItem>
                         <DropdownItem divider/>
-                        <DropdownItem>
-                            <Link exact to="/user" className="navbar-brand">
+                            <Link exact to="/user">
+                                <DropdownItem className="navbar-brand">
                                 <span style={{color: '#F00', fontSize: 'large'}}>
                                 <FontAwesomeIcon
                                     icon={faUsers}
                                 />
                                     &emsp;User
                                 </span>
+                                </DropdownItem>
                             </Link>
-                        </DropdownItem>
                     </DropdownMenu>
                 </UncontrolledDropdown>);
             } else if (type === "MANAGER") {

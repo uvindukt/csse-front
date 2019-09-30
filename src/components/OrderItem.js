@@ -31,7 +31,7 @@ export default class OrderItem extends React.Component {
                 borderBottomRightRadius: '0.5rem',
                 borderTopRightRadius: '0.5rem',
             }}>
-                <Button className="button my-0" onClick={() => this.setState({redirect: true})} disabled={this.state.order.status === 'APPROVED'}>
+                <Button className="button my-0" onClick={() => this.setState({redirect: true})} hidden={this.state.order.status === 'APPROVED'}>
                     <FontAwesomeIcon icon={faEdit}/>
                 </Button>
             </td>
