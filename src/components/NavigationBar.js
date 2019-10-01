@@ -143,27 +143,16 @@ class NavigationBar extends Component {
                         Options
                     </DropdownToggle>
                     <DropdownMenu right>
-                        <DropdownItem>
-                            <Link exact to="/instructor/courses" className="navbar-brand">
-                                <span style={{color: '#5cb85c', fontSize: 'large'}}>
+                        <Link exact to="/user">
+                            <DropdownItem className="navbar-brand">
+                                <span style={{color: '#F00', fontSize: 'large'}}>
                                 <FontAwesomeIcon
-                                    icon={faClipboardCheck}
+                                    icon={faUsers}
                                 />
-                                    &ensp;Courses
+                                    &emsp;User
                                 </span>
-                            </Link>
-                        </DropdownItem>
-                        <DropdownItem divider/>
-                        <DropdownItem>
-                            <Link exact to="/notifications" className="navbar-brand">
-                                <span style={{color: '#428bca', fontSize: 'large'}}>
-                                <FontAwesomeIcon
-                                    icon={faBell}
-                                />
-                                    &ensp;Notifications
-                                </span>
-                            </Link>
-                        </DropdownItem>
+                            </DropdownItem>
+                        </Link>
                     </DropdownMenu>
                 </UncontrolledDropdown>);
             } else {
