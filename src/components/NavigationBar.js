@@ -62,11 +62,6 @@ class NavigationBar extends Component {
                             &ensp;LOGIN
                         </Link>
                     </NavItem>
-                    <NavItem>
-                        <Link to="/register" className="nav-link mx-1">
-                            &ensp;SIGN UP
-                        </Link>
-                    </NavItem>
                 </React.Fragment>
             );
 

@@ -12,7 +12,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faEnvelope,
     faKey,
-    faPhone,
     faUser,
     faEdit,
     faUserEdit
@@ -67,31 +66,13 @@ class Profile extends Component {
     render() {
         if (!this.props.session.isAuthenticated) return <Redirect to="/"/>;
 
-        let { name, email, telephone } = this.state;
+        let { name, email } = this.state;
 
         let prompt = null;
         if (this.state.prompt)
             prompt = <ProfilePrompt promptText={this.state.promptText} type={this.state.type} login={this.props.login}
                                     URI={this.state.URI} token={this.state.token}
                                     resetPrompt={this.resetPrompt}/>;
-
-        let tel = null;
-        if (this.props.session.type !== "admin")
-            tel = <ListGroupItem className="text-left">
-                <Row>
-                    <Col md={6}>
-                        <ListGroupItemHeading><FontAwesomeIcon
-                            icon={faPhone}/>&emsp;Telephone</ListGroupItemHeading>
-                        <ListGroupItemText className="text-muted mt-2 my-0">{telephone}</ListGroupItemText>
-                    </Col>
-                    <Col md={6} className="text-right">
-                        <Button
-                            onClick={() => this.renderPrompt('telephone')}
-                            className="button m-0 mt-2 py-1"><FontAwesomeIcon
-                            icon={faEdit}/></Button>
-                    </Col>
-                </Row>
-            </ListGroupItem>;
 
         return (
             <div className="container-fluid row mx-0 text-center">
@@ -130,7 +111,6 @@ class Profile extends Component {
                                 </Col>
                             </Row>
                         </ListGroupItem>
-                        {tel}
                         <ListGroupItem className="text-left">
                             <Row>
                                 <Col md={6}>

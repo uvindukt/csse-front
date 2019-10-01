@@ -19,7 +19,7 @@ import {
 import { Redirect } from "react-router-dom";
 import Alert from "./Alert";
 
-const types = ["ADMIN", "SITE MANAGER", "ACCOUNTANT", "MANAGEMENT"];
+const types = ["SITE MANAGER", "ACCOUNTANT", "MANAGEMENT"];
 
 class User extends Component {
     constructor(props) {
@@ -27,7 +27,7 @@ class User extends Component {
         this.state = {
             name: "",
             email: "",
-            type: "ADMIN",
+            type: "SITE MANAGER",
             telephone: "",
             alert: false,
             alertText: null
