@@ -21,10 +21,10 @@ export default class InventoryItem extends React.Component {
                 borderTopLeftRadius: '0.5rem'
             }}>{this.state.item.name}</td>
             <td>{this.state.item.quantity}</td>
-            <td style={{
+            <th style={{
                 borderBottomRightRadius: '0.5rem',
                 borderTopRightRadius: '0.5rem'
-            }}>{this.state.item.unitPrice}</td>
+            }}>Rs. {this.state.item.unitPrice}</th>
         </tr>
         
     }

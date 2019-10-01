@@ -124,17 +124,6 @@ class NavigationBar extends Component {
                                 </span>
                                 </DropdownItem>
                             </Link>
-                        <DropdownItem divider/>
-                            <Link exact to="/user">
-                                <DropdownItem className="navbar-brand">
-                                <span style={{color: '#F00', fontSize: 'large'}}>
-                                <FontAwesomeIcon
-                                    icon={faUsers}
-                                />
-                                    &emsp;User
-                                </span>
-                                </DropdownItem>
-                            </Link>
                     </DropdownMenu>
                 </UncontrolledDropdown>);
             } else if (type === "MANAGER") {
